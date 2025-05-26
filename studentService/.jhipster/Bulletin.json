@@ -1,0 +1,35 @@
+{
+  "annotations": {
+    "changelogDate": "20250520210822"
+  },
+  "applications": ["gateway", "studentService"],
+  "clientRootFolder": "studentService",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "anneeAcademique",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "moyenne",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "mention",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dossierId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "studentService",
+  "name": "Bulletin",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

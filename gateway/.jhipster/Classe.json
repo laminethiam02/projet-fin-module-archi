@@ -1,0 +1,27 @@
+{
+  "annotations": {
+    "changelogDate": "20250520211322"
+  },
+  "applications": ["gateway", "teacherService"],
+  "clientRootFolder": "teacherService",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "nomClasse",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "anneeScolaire",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "teacherService",
+  "name": "Classe",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "elasticsearch",
+  "service": "serviceImpl"
+}

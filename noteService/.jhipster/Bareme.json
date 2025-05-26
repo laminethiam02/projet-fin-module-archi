@@ -1,0 +1,31 @@
+{
+  "annotations": {
+    "changelogDate": "20250520210822"
+  },
+  "applications": ["gateway", "noteService"],
+  "clientRootFolder": "noteService",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "intitule",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "totalPoints",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "examenId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "noteService",
+  "name": "Bareme",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

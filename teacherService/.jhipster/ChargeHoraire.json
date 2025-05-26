@@ -1,0 +1,32 @@
+{
+  "annotations": {
+    "changelogDate": "20250520210922"
+  },
+  "applications": ["gateway", "teacherService"],
+  "clientRootFolder": "teacherService",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "nombreHeures",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "contratId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "classeId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "teacherService",
+  "name": "ChargeHoraire",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}
