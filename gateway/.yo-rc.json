@@ -1,0 +1,67 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 0,
+    "applicationType": "gateway",
+    "applications": {
+      "curriculumService": {
+        "applicationIndex": 4,
+        "serverPort": "8084"
+      },
+      "noteService": {
+        "applicationIndex": 5,
+        "serverPort": "8085"
+      },
+      "reportingService": {
+        "applicationIndex": 6,
+        "serverPort": "8086"
+      },
+      "studentService": {
+        "applicationIndex": 2,
+        "serverPort": "8082"
+      },
+      "teacherService": {
+        "applicationIndex": 3,
+        "serverPort": "8083"
+      },
+      "userService": {
+        "applicationIndex": 1,
+        "serverPort": "8081"
+      }
+    },
+    "authenticationType": "oauth2",
+    "baseName": "gateway",
+    "buildTool": "maven",
+    "clientPackageManager": "npm",
+    "entities": [
+      "Compte",
+      "Profil",
+      "DossierEtudiant",
+      "Bulletin",
+      "ReleveNote",
+      "Contrat",
+      "Classe",
+      "ChargeHoraire",
+      "Programme",
+      "Niveau",
+      "UE",
+      "MatiereProgramme",
+      "Examen",
+      "Bareme",
+      "Resultat",
+      "RapportStatistique",
+      "Indicateur",
+      "AccesRapport"
+    ],
+    "jhipsterVersion": "8.10.0",
+    "languages": ["en"],
+    "lastLiquibaseTimestamp": 1747776262000,
+    "nativeLanguage": "en",
+    "packageName": "sn.edu.ugb",
+    "prodDatabaseType": "postgresql",
+    "reactive": true,
+    "serverPort": 8080,
+    "serviceDiscoveryType": "consul",
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}

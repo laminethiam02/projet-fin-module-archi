@@ -1,0 +1,296 @@
+// -------------------------
+// APPLICATION GATEWAY
+// -------------------------
+application {
+  config {
+    baseName gateway
+    applicationType gateway
+    packageName sn.edu.ugb
+    authenticationType oauth2
+    serviceDiscoveryType consul
+    skipClient true
+    prodDatabaseType postgresql
+    buildTool maven
+    clientPackageManager npm
+  }
+  entities *
+}
+
+// -------------------------
+// MICRO SERVICE UTILISATEUR
+// -------------------------
+application {
+  config {
+    baseName userService
+    applicationType microservice
+    packageName sn.edu.ugb.user
+    authenticationType oauth2
+    serviceDiscoveryType consul
+    skipClient true
+    prodDatabaseType postgresql
+    buildTool maven
+    serverPort 8081
+  }
+  entities Compte, Profil
+}
+
+// -------------------------
+// MICRO SERVICE ETUDIANT
+// -------------------------
+application {
+  config {
+    baseName studentService
+    applicationType microservice
+    packageName sn.edu.ugb.student
+    authenticationType oauth2
+    serviceDiscoveryType consul
+    skipClient true
+    prodDatabaseType postgresql
+    buildTool maven
+    serverPort 8082
+  }
+  entities DossierEtudiant, Bulletin, ReleveNote
+}
+
+// -------------------------
+// MICRO SERVICE ENSEIGNANT
+// -------------------------
+application {
+  config {
+    baseName teacherService
+    applicationType microservice
+    packageName sn.edu.ugb.teacher
+    authenticationType oauth2
+    serviceDiscoveryType consul
+    skipClient true
+    prodDatabaseType postgresql
+    buildTool maven
+    serverPort 8083
+  }
+  entities Contrat, Classe, ChargeHoraire
+}
+
+// -------------------------
+// MICRO SERVICE CURSUS / MODULES
+// -------------------------
+application {
+  config {
+    baseName curriculumService
+    applicationType microservice
+    packageName sn.edu.ugb.curriculum
+    authenticationType oauth2
+    serviceDiscoveryType consul
+    skipClient true
+    prodDatabaseType postgresql
+    buildTool maven
+    serverPort 8084
+  }
+  entities Programme, Niveau, UE, MatiereProgramme
+}
+
+// -------------------------
+// MICRO SERVICE NOTES
+// -------------------------
+application {
+  config {
+    baseName noteService
+    applicationType microservice
+    packageName sn.edu.ugb.grade
+    authenticationType oauth2
+    serviceDiscoveryType consul
+    skipClient true
+    prodDatabaseType postgresql
+    buildTool maven
+    serverPort 8085
+  }
+  entities Examen, Bareme, Resultat
+}
+
+// -------------------------
+// MICRO SERVICE REPORTING
+// -------------------------
+application {
+  config {
+    baseName reportingService
+    applicationType microservice
+    packageName sn.edu.ugb.reporting
+    authenticationType oauth2
+    serviceDiscoveryType consul
+    skipClient true
+    prodDatabaseType postgresql
+    buildTool maven
+    serverPort 8086
+  }
+  entities RapportStatistique, Indicateur, AccesRapport
+}
+
+// -------------------------
+// ENTITÉS UTILISATEUR
+// -------------------------
+entity Compte {
+  login String required
+  motDePasse String required
+  actif Boolean
+}
+
+entity Profil {
+  nomComplet String required
+  adresse String
+  email String required unique
+  telephone String
+  compteId Long required
+}
+
+
+
+// -------------------------
+// ENTITÉS ETUDIANT
+// -------------------------
+entity DossierEtudiant {
+  matricule String required unique
+  nationalite String
+  dateNaissance LocalDate
+  profilId Long required
+}
+
+entity Bulletin {
+  anneeAcademique String required
+  moyenne Float
+  mention String
+  dossierId Long required
+}
+
+entity ReleveNote {
+  semestre String required
+  noteGlobale Float required
+  dossierId Long required
+}
+
+// -------------------------
+// ENTITÉS ENSEIGNANT
+// -------------------------
+entity Contrat {
+  typeContrat String required
+  dateDebut LocalDate required
+  dateFin LocalDate
+  profilId Long required
+}
+
+entity Classe {
+  nomClasse String required
+  anneeScolaire String required
+}
+
+entity ChargeHoraire {
+  nombreHeures Integer required
+  contratId Long required
+  classeId Long required
+}
+
+// -------------------------
+// ENTITÉS CURSUS
+// -------------------------
+entity Programme {
+  intitule String required
+  codeProgramme String required unique
+}
+
+entity Niveau {
+  libelle String required
+  ordre Integer required
+  programmeId Long required
+}
+
+entity UE {
+  intitule String required
+  credits Integer required
+  niveauId Long required
+}
+
+entity MatiereProgramme {
+  nomMatiere String required
+  heuresCours Integer
+  ueId Long required
+}
+
+// -------------------------
+// ENTITÉS NOTES
+// -------------------------
+entity Examen {
+  typeExamen String required
+  dateExamen LocalDate required
+  matiereId Long required
+}
+
+entity Bareme {
+  intitule String
+  totalPoints Integer required
+  examenId Long required
+}
+
+entity Resultat {
+  noteObtenue Float required
+  commentaire String
+  examenId Long required
+  dossierId Long required
+}
+
+// -------------------------
+// ENTITÉS REPORTING
+// -------------------------
+entity RapportStatistique {
+  titre String required
+  description String
+  dateGeneration Instant required
+  indicateurId Long required
+}
+
+entity Indicateur {
+  nom String required
+  valeur Float required
+}
+
+entity AccesRapport {
+  utilisateurId Long required
+  rapportId Long required
+  dateAcces Instant required
+}
+
+// -------------------------
+// ENUMS
+// -------------------------
+enum TypeContrat {
+  VACATAIRE, PERMANENT, CONTRACTUEL
+}
+
+enum TypeExamen {
+  CONTINU, FINAL, RATTRAPAGE
+}
+
+
+
+
+// -------------------------
+// OPTIONS
+// -------------------------
+service all with serviceImpl
+paginate all with pagination except Resultat, AccesRapport
+dto all with mapstruct
+search all with elasticsearch
+
+microservice Compte, Profil with userService
+microservice DossierEtudiant, Bulletin, ReleveNote with studentService
+microservice Contrat, Classe, ChargeHoraire with teacherService
+microservice Programme, Niveau, UE, MatiereProgramme with curriculumService
+microservice Examen, Bareme, Resultat with noteService
+microservice RapportStatistique, Indicateur, AccesRapport with reportingService
+
+// -------------------------
+// DOCKER COMPOSE
+// -------------------------
+deployment {
+  deploymentType docker-compose
+  appsFolders [gateway, userService, studentService, teacherService, curriculumService, noteService, reportingService]
+  dockerRepositoryName "ugb"
+  serviceDiscoveryType consul
+}

@@ -1,0 +1,21 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 6,
+    "applicationType": "microservice",
+    "authenticationType": "oauth2",
+    "baseName": "reportingService",
+    "buildTool": "maven",
+    "entities": ["RapportStatistique", "Indicateur", "AccesRapport"],
+    "jhipsterVersion": "8.10.0",
+    "jwtSecretKey": "MWRjZmVhZmY2MzQ4YzU0OGQ0NDUzNTdiNzYzNWQzNTI1MTdiYWEwNzI3ODJlMzNjOTVlYzczYTBkN2FmZWE5NzFlNjc2YzU0MGI3ZjFjZGUwMWZhNGZmMDNlNzU2MjExMzA0Mzk2ZTdhZjE5MjcyMWJjMjVmODhkMDFiODZhYjk=",
+    "languages": ["en"],
+    "lastLiquibaseTimestamp": 1747775362000,
+    "nativeLanguage": "en",
+    "packageName": "sn.edu.ugb.reporting",
+    "prodDatabaseType": "postgresql",
+    "serverPort": "8086",
+    "serviceDiscoveryType": "consul",
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}

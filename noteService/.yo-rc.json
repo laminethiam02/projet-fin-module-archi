@@ -1,0 +1,21 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 5,
+    "applicationType": "microservice",
+    "authenticationType": "oauth2",
+    "baseName": "noteService",
+    "buildTool": "maven",
+    "entities": ["Examen", "Bareme", "Resultat"],
+    "jhipsterVersion": "8.10.0",
+    "jwtSecretKey": "MzdjYWUxNDg5ZDQ5ZjFhMjAwNGNmMGU0MTc2ZGNhNWFiNGE4NTk5N2UzZjQ1ZTM4ZWM1YjQ0ZDYxMTczOTNiMTU3M2VmMzcxNTI4YmFiZjliMjg5MzdjYTUwNTQ1MGE1NjJmZjhjNGViYjE3ODk4YzcxMjliY2Q1NjhkYTM1ZjU=",
+    "languages": ["en"],
+    "lastLiquibaseTimestamp": 1747775362000,
+    "nativeLanguage": "en",
+    "packageName": "sn.edu.ugb.grade",
+    "prodDatabaseType": "postgresql",
+    "serverPort": "8085",
+    "serviceDiscoveryType": "consul",
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}
