@@ -71,7 +71,6 @@ cd userService
 ./mvnw
 ```
 
-Répétez cette étape pour chaque dossier de microservice ou utilisez une IDE comme IntelliJ.
 
 ---
 
@@ -116,7 +115,7 @@ Les schémas PostgreSQL sont automatiquement créés à partir des entités JHip
 | noteService       | noteService       |
 | reportingService  | reportingService  |
 
-Les exports `.sql` de chaque base sont inclus dans le fichier `.zip`.
+Les exports de chaque base sont inclus dans le fichier .zip.
 
 ---
 
