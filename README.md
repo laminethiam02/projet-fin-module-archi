@@ -115,7 +115,7 @@ Les schémas PostgreSQL sont automatiquement créés à partir des entités JHip
 | noteService       | noteService       |
 | reportingService  | reportingService  |
 
-Les exports de chaque base sont mis dans un document pdf à part.
+Les exports de chaque base sont inclus dans le fichier `.zip`.
 
 ---
 
